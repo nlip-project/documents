@@ -14,4 +14,4 @@ For Working PoC
 
 For Approval as Formal Specification 
 * Rough Consensus from all ECMA members participating in the TC 
-* Agreement by the Chair and Vice Chair of the Technical Committee 
+* Consensus Agreement by the officials of the Technical Committee 
