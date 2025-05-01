@@ -42,7 +42,7 @@ The protocol is designed to be:
 This document explores how NLIP enables seamless interoperability between different AI frameworks and protocols, making it possible to build complex AI applications that leverage the best tools and services from across the ecosystem.
 
 ### 1.2 The Original NLIP Proposal
-NLIP was originally proposed in the [AAAI Workshop specification](https://nlip-project.github.io/.github/#/?id=overview), which formalized its message schema, resource model, and deployment strategies. The specification presents NLIP's use in fundamental deployment topologies:
+NLIP was originally proposed in the [AAAI Workshop specification](https://github.com/nlip-project/documents/blob/main/NLIP_Specification.pdf), which formalized its message schema, resource model, and deployment strategies. The specification presents NLIP's use in fundamental deployment topologies:
 
 ```mermaid
 graph TD
@@ -405,13 +405,27 @@ This document has no IANA actions.
 ## 8. References
 
 ### 8.1 Normative References
-- [NLIP Specification](https://nlip-project.github.io/.github/#/?id=overview)
-- [AAAI Workshop Paper](https://arxiv.org/abs/2402.18649)
+- [NLIP Specification](https://github.com/nlip-project/documents/blob/main/NLIP_Specification.pdf)  
+  Official specification PDF from the NLIP project GitHub repository.
+
+- [Model Context Protocol (MCP) by Anthropic](https://www.anthropic.com/news/model-context-protocol)  
+  Official announcement and overview of the Model Context Protocol by Anthropic.
+
+- [Agent-to-Agent Protocol (A2A) by Google](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/)  
+  Official Google blog post introducing the Agent-to-Agent (A2A) protocol.
 
 ### 8.2 Informative References
-- [LangChain Documentation](https://python.langchain.com/docs/get_started/introduction)
-- [AutoGen Documentation](https://microsoft.github.io/autogen/)
-- [LangGraph Documentation](https://python.langgraph.com/)
+- [LangChain Documentation](https://python.langchain.com/docs/introduction/)  
+  Official documentation for the LangChain framework.
+
+- [AutoGen Documentation](https://microsoft.github.io/autogen/0.2/docs/Getting-Started/)  
+  Official documentation for the AutoGen agent framework.
+
+- [LangGraph Documentation](https://www.langchain.com/langgraph)  
+  Official documentation for the LangGraph framework.
+
+- [Google Agent Development Kit (ADK)](https://google.github.io/adk-docs/)  
+  Official documentation for Google's Agent Development Kit.
 
 ## 9. Authors' Addresses
 
