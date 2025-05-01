@@ -57,6 +57,8 @@ MD044: false  # Proper names should have the correct capitalization
 MD045: false  # Images should have alternate text (alt text)
 MD049: false  # Emphasis style should be consistent
 MD050: false  # Strong style should be consistent
+MD053: false  # Link text should not be the same as the link URL
+MD058: false  # Blanks around tables
 
 # Other rules
 MD014: false  # Dollar signs used before commands without showing output 
