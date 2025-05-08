@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NLIP Message Schema",
+  "type": "object",
+  "properties": {
+    "MessageType": {
+      "type": "string"
+    },
+    "Format": {
+      "type": "string",
+      "enum": ["text", "token", "structured", "binary", "location", "error", "generic"]
+    },
+    "Subformat": {
+      "type": "string"
+    },
+    "Content": {
+      "type": ["string", "number", "object", "array", "boolean", "null"]
+    },
+    "Submessages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Label": { "type": "string" },
+          "Format": {
+            "type": "string",
+            "enum": ["text", "token", "structured", "binary", "location", "error", "generic"]
+          },
+          "Subformat": { "type": "string" },
+          "Content": {
+            "type": ["string", "number", "object", "array", "boolean", "null"]
+          }
+        },
+        "required": ["Format", "Subformat", "Content"]
+      }
+    }
+  },
+  "required": ["Format", "Subformat", "Content"]
+}
+
