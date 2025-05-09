@@ -405,8 +405,8 @@ This document has no IANA actions.
 ## 8. References
 
 ### 8.1 Normative References
-- [NLIP Specification](https://github.com/nlip-project/documents/blob/main/NLIP_Specification.pdf)  
-  Official specification PDF from the NLIP project GitHub repository.
+- [First Draft of proposed standard ECMA TC-56 NLIP, Natural Language Interaction Protocol](https://github.com/nlip-project/ecma_draft1)  
+  Officially maintained draft specification from the NLIP project GitHub repository.
 
 - [Model Context Protocol (MCP) by Anthropic](https://www.anthropic.com/news/model-context-protocol)  
   Official announcement and overview of the Model Context Protocol by Anthropic.
