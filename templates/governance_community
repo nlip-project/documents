@@ -1,0 +1,107 @@
+# GOVERNANCE.md
+
+<!--
+This GOVERNANCE.md file is intended for use in non-ECMA-hosted submodules of the NLIP project
+(e.g., SDKs, bridges, experimental toolchains, adapters). It provides a lightweight governance model
+based on maintainership and lazy consensus, aligned with open-source best practices.
+
+To adapt this template:
+- Replace references to "NLIP" with your project/component name if desired.
+- Adjust contributor roles, escalation paths, or review guidelines to match your subproject.
+- Keep ECMA references only if your component aligns directly with the NLIP spec.
+
+Any section may be expanded or removed based on community needs.
+-->
+
+## 🔧 Project Scope
+
+This repository is part of the broader NLIP ecosystem — a community-driven initiative to standardize agent-to-agent communication using natural language. While the NLIP protocol itself is governed by ECMA TC56, this component operates under an open, contributor-maintained model.
+
+---
+
+## 👥 Maintainer Governance
+
+This subproject uses a **lazy consensus** model with **nominated maintainers** who guide its direction.
+
+### Maintainers
+<!--
+Maintainers are trusted contributors with write access who review PRs, set roadmap priorities,
+and ensure stability. They may rotate periodically based on participation.
+-->
+- Listed in [`MAINTAINERS.md`](./docs/MAINTAINERS.md) or repo settings.
+- Must act in accordance with the [Code of Conduct](./docs/CODE_OF_CONDUCT.md).
+- Are expected to:
+  - Review issues and pull requests regularly
+  - Engage respectfully with contributors
+  - Coordinate with other NLIP subprojects
+
+New maintainers can be nominated by existing ones and approved by rough consensus.
+
+---
+
+## 📥 Contribution Process
+
+Anyone can propose features, fixes, or improvements via issues or pull requests.
+
+- Follow the [CONTRIBUTING.md](./docs/CONTRIBUTING.md) guide
+- Use discussion threads for early design feedback
+- Label RFCs or architectural changes with `proposal`
+- For breaking changes, use `proposal-major` and ping maintainers
+
+If needed, maintainers will call for input and aim to reach consensus. Otherwise, they may proceed after reasonable review periods.
+
+---
+
+## 📦 Release Process
+
+This component follows a "release-when-ready" cadence:
+
+- Semver is used: `MAJOR.MINOR.PATCH`
+- Releases are tagged in Git and published via GitHub releases
+- Changelogs are maintained in `CHANGELOG.md`
+
+Pre-release (alpha/beta) tags may be used for experimental modules.
+
+---
+
+## 🚨 Escalation & Dispute Resolution
+
+If you believe a maintainer is acting outside community expectations:
+
+1. Raise the concern in an issue or private message if appropriate.
+2. If unresolved, contact the NLIP Core Team (see below).
+3. If applicable, escalate to TC56 if spec compliance is involved.
+
+---
+
+## 🌐 Relationship to NLIP Core
+
+This submodule is part of the NLIP GitHub organization but operates independently. It aligns with the goals of TC56 and contributes upstream where relevant.
+
+For cross-project dependencies, please:
+- File coordination issues in the [nlip-project/meta](https://github.com/nlip-project/.github/issues) repo
+- Attend open office hours or ecosystem sync calls if available
+
+---
+
+## 📜 License and Standards Alignment
+
+- This subproject is licensed under **Apache 2.0**
+- It is designed to be compatible with the royalty-free NLIP specification
+- Feedback may inform ECMA TC56 direction but is not binding unless adopted formally
+
+---
+
+## 📫 Contact
+
+- Use GitHub Discussions or Issues for general questions
+- For interop or integration queries, join the [NLIP discussions](https://github.com/orgs/nlip-project/discussions)
+- For governance feedback, open an issue titled `Governance: [your topic]`
+
+<!--
+To customize this section, you can add named contacts, Discord handles, or working group meeting schedules.
+-->
+
+---
+
+_Last updated: 2025-05-16_
