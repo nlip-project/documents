@@ -50,6 +50,19 @@ The bare message consists of three sections: properties, application-properties,
 
 Any field that is not enumerated below may be used as the situation and implementation requires.  The NLIP binding has nothing to say about their use.
 
+Fields in the protocol binding:
+
+| **Section** | **Field** |
+|---|---|
+|properties|user-id|
+|properties|to|
+|properties|reply-to|
+|properties|correlation-id|
+|properties|content-type|
+|application-properties|nlip-reply-\<format\>|
+|application-data|data|
+
+
 #### properties.user-id
 
 This field is optional, but if it is present, it MUST contain the authentic identity of the user that originated the message.
@@ -95,6 +108,16 @@ Application-properties is an optional message section that carries a map of appl
 The application data section is where the NLIP payload is encoded.  NLIP messages are encoded as "Data" sections which contain pure binary payload.  This section contains the entire NLIP message in its raw binary form or its JSON-encoded form (as indicated by the content-type field).
 
 ### Multi-Format Replies
+
+There is a request-reply pattern that is unique to NLIP whereby a requestor may wish to receive the response in more than one format.  An example of this is a response that is generated both in machine-readable JSON format and in natural-language text for human consumption or for audit logging.  Furthermore, these different responses may need to be delivered to different consumers in the network.
+
+This is achieved by adding items to the application-properties map using a key of the form:
+
+`nlip-reply-<content-type>`
+
+The value referenced by the key is an address to be used for replies of the indicated content-type.
+
+NLIP-reply fields serve two purposes:  They indicate to the receiver which formats are desired for responses; and they provide overrides for the `reply-to` field in properties.  If an agent acting as an NLIP server receives a request with one or more NLIP-reply fields in the application-properties, it SHOULD generate responses in each of the indicated content-types and use the NLIP-reply addresses as destinations for their respective response messages.
 
 ## Questions and Issues
 
