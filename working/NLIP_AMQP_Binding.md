@@ -1,10 +1,10 @@
 # AMQP Binding for NLIP
 
-## Introduction
+## Introduction to AMQP
 
 Advanced Message Queueing Protocol (AMQP) is an ISO-standard, enterprise-caliber message transfer protocol with a rich set of capabilities that make it well suited for use in complex and large-scale distributed software systems.
 
-Aside from the handshakes used to establish a TLS security layer, and the optional SASL authentication exchange, AMQP is symmetric and asynchronous.
+Aside from the handshakes used to establish security, AMQP is symmetric and asynchronous.
 
 ### Protocol Symmetry
 
@@ -36,7 +36,21 @@ Brokers are useful when temporal disconnect is desired (i.e. the producer and co
 
 ### Sessions and Links for Flow Control and Multiplexing
 
+The structure of AMQP starts with the Connection.  An AMQP connection is a reliable transport connection, typically TCP (Transport Control Protocol).  There are two standard security layers that can be used to enhance the security of the AMQP connection:  TLS (Transport Layer Security) is used for encryption and authentication of one or both endpoints of the connection; SASL (Simple Authentication and Security Layer) can be further used to authenticate the client-side participant in the AMQP connection.
+
+Sub-structure of the AMQP connection consists of Sessions, Links, and Frames.  Connections contain sessions, sessions contain links, and links carry frames.  Messages are transferred in one or more frames on a link.
+
+Sessions provide a sliding-window flow control mechanism that is tied to the number of frames that a receiver is willing to accept.  Since frames have a maximum size, session flow control can be based on the amount of memory that an application is willing to allocate to message traffic for a specific purpose.  Since multiple sessions can be established, each with its own allocated buffer memory, multiple classes of traffic can be transferred over an AMQP connection such that congestion in one class does not affect the flow of traffic in another class.  This is very useful for systems in which control traffic must flow regardless of the volume of concurrent bulk transfers.  It is also useful in edge applications where memory may be more scarce.
+
+Links are unidirectional and represent a single stream of message traffic.  A link has two termini, one a source and one a target.  Message traffic flows from source to target.  Links provide a credit-based flow control in which the target indicates how many messages it is willing to receive.  Since there is no limit to the size of a message, link flow control cannot be tied to available memory.  It is used to meter the flow of traffic over that link.  Links also provide varying levels of delivery guarantee for messages.  Message transfer can be best-effort, in which the sender is not interested in knowing whether the message was received.  Transfer can also be at-least-once, in which the sender is notified as to whether or not the message was accepted by the receiver.  Exactly-once transfer is like at-least-once, but guarantees that the receiver is not given duplicate copies in the event the message was re-transmitted.
+
+Frames are used to break large messages into manageable fragments.  The framing capability of AMQP allows message delivery over links and sessions to be interleaved.  This provides multiplexing of multiple message transfers.  The transfer of a very large message on one link will not block the transfer of a smaller message on another link.  The frames of both messages will be interleaved across the connection.
+
 ### To, Reply-To, and Dynamic Addresses
+
+AMQP supports a variety of different messaging patterns including request/reply, where one or more reply messages are sent as a result of receiving a request message.  All of the patterns involve sending a message to a specific logical destination (the `to` address).
+
+In cases where a reply is desired, the request message contains a `reply-to` address to designate where the replies are to be sent.  A requestor needs to establish a receiving link on which to receive replies.  The requestor can use some form of unique address (a UUID) for the reply.  Alternatively, the requestor can use a _dynamic_ address for the reply link's target terminus.  In this case, the requestor sets the `dynamic` flag when establishing the link.  This instructs the connected peer to create a unique, dynamic address for the link.  This address can then be used in the `reply-to` field in the request message.  Dynamic addresses are particularly useful when running in intermediated AMQP networks where the intermediary is able to create a temporary address that is routable from all other parts of the network.
 
 ## Normative Content
 
@@ -123,3 +137,4 @@ NLIP-reply fields serve two purposes:  They indicate to the receiver which forma
 
  - Is streaming content relevant and desired for NLIP?  As an example, might NLIP be used to transfer a live audio or video stream to an agent for processing?
  - Can there be multiple responses to a request?  This might be useful in the streamed video case:  Request contains a streaming video, responses come in real-time when certain patterns are identified in the video stream and may contain frame captures of the identified artifacts.
+ - There remains a question of how agent addresses are registered and discovered.  This document assumes that this is described elsewhere.
