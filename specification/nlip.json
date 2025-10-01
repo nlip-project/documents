@@ -8,7 +8,7 @@
     },
     "Format": {
       "type": "string",
-      "enum": ["text", "token", "structured", "binary", "location", "error", "generic"]
+      "enum": ["text", "token", "structured", "binary", "location", "generic"]
     },
     "Subformat": {
       "type": "string"
@@ -24,7 +24,7 @@
           "Label": { "type": "string" },
           "Format": {
             "type": "string",
-            "enum": ["text", "token", "structured", "binary", "location", "error", "generic"]
+            "enum": ["text", "token", "structured", "binary", "location", "generic"]
           },
           "Subformat": { "type": "string" },
           "Content": {
